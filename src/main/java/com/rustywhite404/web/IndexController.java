@@ -1,5 +1,6 @@
 package com.rustywhite404.web;
 
+import com.rustywhite404.config.auth.LoginUser;
 import com.rustywhite404.config.auth.dto.SessionUser;
 import com.rustywhite404.service.posts.PostsService;
 import com.rustywhite404.web.dto.PostsResponseDto;
@@ -20,12 +21,13 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts",postsService.findAllDesc());
 
-        SessionUser user = (SessionUser)httpSession.getAttribute("user");
+        //SessionUser user = (SessionUser)httpSession.getAttribute("user");
         //CustomOAuth2UserService에서 로그인 성공 시 세션에 SessionUser를 저장하도록 구성해놨다.
         // 그래서 로그인 성공 시 httpSession.getAttribute("user")에서 값을 가져올 수 있는 것.
+        // ㄴ 이 코드는 @LoginUser를 어노테이션으로 구현하여 더 이상 사용하지 않음(리팩토링)
 
         if(user!=null){
             model.addAttribute("googleName",user.getName());
