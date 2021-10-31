@@ -4,8 +4,10 @@ import com.rustywhite404.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
+@ToString
 @NoArgsConstructor
 public class PostsSaveRequestDto {
 

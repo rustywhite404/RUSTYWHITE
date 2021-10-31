@@ -5,6 +5,15 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+                {{#googleName}} <!--머스태치에서는 if문을 제공하지 않으므로 최종값을 넘겨줘야 함-->
+                    Logged in as : <span id="user">{{googleName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a> <!--/logout은 스프링 시큐리티에서 기본적으로 제공하는 로그아웃 URL. 컨트롤러를 따로 만들 필요가 X-->
+                {{/googleName}}
+                {{^googleName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">GOOGLE LOGIN</a>
+                {{/googleName}}
+                <!--머스태치에서 해당 값이 존재하지 않는 경우에는 ^를 사용함. userName이 없다면 구글로그인 버튼을 노출시킴.
+                    /oauth2/authrization/google 도 스프링 시큐리티에서 기본적으로 제공하는 로그인 URL. 컨트롤러에서 생성할 필요 X -->
             </div>
         </div>
         <br>

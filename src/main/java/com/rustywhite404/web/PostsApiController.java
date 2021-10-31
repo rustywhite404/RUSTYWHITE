@@ -16,6 +16,7 @@ public class PostsApiController {
 
     @PostMapping("/api/v1/posts") // 글 등록 기능
     public Long save(@RequestBody PostsSaveRequestDto requestDto){
+        System.out.println("**********************DTO:"+requestDto.toString());
         return postsService.save(requestDto);
     }
 
