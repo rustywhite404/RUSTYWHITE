@@ -1,2 +1,10 @@
+com/rustywhite404/web/dto/HelloResponseDtoTest.java
+ com.rustywhite404.web.dto.HelloResponseDtoTest
+com/rustywhite404/web/domain/posts/PostsRepositoryTest.java
+ com.rustywhite404.web.domain.posts.PostsRepositoryTest
+com/rustywhite404/web/IndexControllerTest.java
+ com.rustywhite404.web.IndexControllerTest
+com/rustywhite404/web/PostsApiControllerTest.java
+ com.rustywhite404.web.PostsApiControllerTest
 com/rustywhite404/web/HelloControllerTest.java
  com.rustywhite404.web.HelloControllerTest
