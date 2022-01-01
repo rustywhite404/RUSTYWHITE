@@ -1,0 +1,43 @@
+{{>layout/header }}
+<!-- ㄴ 현재 파일을 기준으로 다른 파일을 가져온다-->
+    <h1>SPRINGBOOT WEB SERVICE ::</h1>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+                {{#googleName}} <!--머스태치에서는 if문을 제공하지 않으므로 최종값을 넘겨줘야 함-->
+                    Logged in as : <span id="user">{{googleName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a> <!--/logout은 스프링 시큐리티에서 기본적으로 제공하는 로그아웃 URL. 컨트롤러를 따로 만들 필요가 X-->
+                {{/googleName}}
+                <!--머스태치에서 해당 값이 존재하지 않는 경우에는 ^를 사용함. userName이 없다면 구글로그인 버튼을 노출시킴.
+                    /oauth2/authrization/google 도 스프링 시큐리티에서 기본적으로 제공하는 로그인 URL. 컨트롤러에서 생성할 필요 X -->
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">GOOGLE LOGIN</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">NAVER LOGIN</a>
+                {{/userName}}
+            </div>
+        </div>
+        <br>
+        <!--목록 출력영역-->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+                <tr>
+                    <th>게시글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>수정일</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                {{#posts}} <!-- #~ : posts라는 List를 순회한다. for문처럼 작동 -->
+                    <tr>
+                        <td>{{id}}</td> <!-- List에서 뽑아낸 객체의 필드명-->
+                        <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+                        <td>{{author}}</td>
+                        <td>{{modifiedDate}}</td>
+                    </tr>
+                {{/posts}}
+            </tbody>
+        </table>
+    </div>
+{{>layout/footer }}
