@@ -37,6 +37,12 @@ dependencies {
     testCompile("org.assertj:assertj-core:3.12.2")
     testCompile('org.springframework.security:spring-security-test')
     annotationProcessor 'org.projectlombok:lombok'
+
+    //JUnit4 추가
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
+
 }
 
 test {
